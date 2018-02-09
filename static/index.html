@@ -49,6 +49,8 @@
                 </div>
             </div>
             <!-- End Header -->
+            <div id="player1" class="aplayer"></div>
+
 
             <!-- Rooms -->
             <div class="row-fluid">
@@ -184,6 +186,26 @@
         <script src="js/vendor/handlebars-1.0.rc.1.js"></script>
         <script src="/socket.io/socket.io.js"></script>
         <script src="js/main.js"></script>
+        <script src="js/dist/APlayer.min.js"></script>
+
+        <script>
+            var ap1 = new APlayer({
+                element: document.getElementById('player1'),
+                narrow: false,
+                autoplay: true,
+                showlrc: false,
+                mutex: true,
+                theme: '#e60000',
+                preload: 'metadata',
+                mode: 'circulation',
+                music: {
+                    title: 'Preparation',
+                    author: 'Hans Zimmer/Richard Harvey',
+                    url: 'http://dl.stream.qqmusic.qq.com/M8000036h2Vo12LteN.mp3?vkey=82B10F7CDD0BE00C4B9594C43CB0A273B703A7E552BFEE9DD2C71D954B227672F40BAEEB13E8B0700B85743D7390A3CE324EA25A02AB83B2&guid=5150825362&fromtag=1',
+                    pic: 'http://devtest.qiniudn.com/Preparation.jpg'
+                }
+            });
+        </script>
     </body>
 </html>
 
