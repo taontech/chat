@@ -201,7 +201,7 @@
     };
     var searchAndPlay = function(name){
         $.ajax({
-            url: "https://c.y.qq.com/splcloud/fcgi-bin/smartbox_new.fcg?is_xml=0&format=jsonp&key="+name+"&g_tk=5381&loginUin=0&hostUin=0&inCharset=utf8&outCharset=utf-8&notice=0&platform=yqq&needNewCode=0&jsonpCallback=callback",
+            url: "https://c.y.qq.com/splcloud/fcgi-bin/smartbox_new.fcg?is_xml=0&format=jsonp&key="+encodeURI(name)+"&g_tk=5381&loginUin=0&hostUin=0&inCharset=utf8&outCharset=utf-8&notice=0&platform=yqq&needNewCode=0&jsonpCallback=callback",
             dataType:'JSONP',
             type:'GET',
             // jsonpCallback: "dosomething",

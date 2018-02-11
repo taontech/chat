@@ -1,4 +1,6 @@
-# SimpleChat
+# MusicChat
+
+<strong>输入"/"后面跟歌名，即可在群内播放搜出来的第一首歌！</strong>
 
 Built with:
 
@@ -17,7 +19,7 @@ If you just want to see it running, visit: http://chat.tegioz.com
 
 ### Get the code
 
-    git clone https://github.com/tegioz/chat.git
+    git clone https://github.com/taontech/chat.git
 
 ### Run
 
