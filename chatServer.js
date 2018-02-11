@@ -6,7 +6,7 @@
 // General
 // ***************************************************************************
 
-var conf = { 
+var conf = {
     port: 8888,
     debug: false,
     dbPort: 6379,
@@ -80,7 +80,7 @@ app.get('/', function(req, res) {
 app.post('/api/broadcast/', requireAuthentication, function(req, res) {
     sendBroadcast(req.body.msg);
     res.send(201, "Message sent to all rooms");
-}); 
+});
 
 // ***************************************************************************
 // Socket.io events
@@ -119,7 +119,7 @@ io.sockets.on('connection', function(socket) {
 
                 // Confirm subscription to user
                 socket.emit('subscriptionConfirmed', {'room': room});
-        
+
                 // Notify subscription to all users in room
                 var message = {'room':room, 'username':username, 'msg':'----- Joined the room -----', 'id':socket.id};
                 io.to(room).emit('userJoinsRoom', message);
@@ -131,16 +131,16 @@ io.sockets.on('connection', function(socket) {
     socket.on('unsubscribe', function(data) {
         // Get user info from db
         db.hget([socket.id, 'username'], function(err, username) {
-        
+
             // Unsubscribe user from chosen rooms
             _.each(data.rooms, function(room) {
                 if (room != conf.mainroom) {
                     socket.leave(room);
                     logger.emit('newEvent', 'userLeavesRoom', {'socket':socket.id, 'username':username, 'room':room});
-                
+
                     // Confirm unsubscription to user
                     socket.emit('unsubscriptionConfirmed', {'room': room});
-        
+
                     // Notify unsubscription to all users in room
                     var message = {'room':room, 'username':username, 'msg':'----- Left the room -----', 'id': socket.id};
                     io.to(room).emit('userLeavesRoom', message);
@@ -165,6 +165,26 @@ io.sockets.on('connection', function(socket) {
                 // When we've finished with the last one, notify user
                 if (usersInRoom.length == socketsInRoom.length) {
                     socket.emit('usersInRoom', {'users':usersInRoom});
+                }
+            });
+        }
+    });
+
+    socket.on('getMusics',function(data){
+        var usersInRoom = [];
+        var socketsInRoom = _.keys(io.nsps['/'].adapter.rooms[data.room]);
+        for (var i=0; i<socketsInRoom.length; i++) {
+            db.hgetall(socketsInRoom[i], function(err, obj) {
+                usersInRoom.push({'room':data.room, 'username':obj.username, 'id':obj.socketID});
+                // When we've finished with the last one, notify user
+                console.log('找到音乐socket');
+                if (usersInRoom.length == socketsInRoom.length)
+                 {
+                    socket.emit('musicInRoom', {'musics':[{
+                        title: '李白',
+                        author: '李荣浩',
+                        url: 'http://dl.stream.qqmusic.qq.com/C100000rBgbe4K0vuz.m4a?guid=563327206&vkey=C9C0F01F38BEE706ACB74A3AA60E1EF678C05B7A055C5A42191D3205AAFDDB2DC324EDB709768256468E5ED1EED0E2FF14FD48A0EAEBDCA2&uin=0&fromtag=999',
+                    }],'starttime':10});
                 }
             });
         }
@@ -205,10 +225,10 @@ io.sockets.on('connection', function(socket) {
 
     // Clean up on disconnect
     socket.on('disconnect', function() {
-        
+
         // Get current rooms of user
         var rooms = socket.rooms;
-        
+
         // Get user info from db
         db.hgetall(socket.id, function(err, obj) {
             if (err) return logger.emit('newEvent', 'error', err);
@@ -222,7 +242,7 @@ io.sockets.on('connection', function(socket) {
                 }
             });
         });
-    
+
         // Delete user from db
         db.del(socket.id, redis.print);
     });
@@ -235,4 +255,3 @@ if (conf.debug) {
         sendBroadcast(text);
     }, 60000);
 }
-

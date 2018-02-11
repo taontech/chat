@@ -54,7 +54,7 @@
 
             <!-- Rooms -->
             <div class="row-fluid">
-                <div class="span12 well" style="background-color:white; border:0px"> 
+                <div class="span12 well" style="background-color:white; border:0px">
                     <!-- Tabs -->
                     <div class="row-fluid">
                         <div class="span12">
@@ -108,7 +108,7 @@
 
             <!-- New message input -->
             <div class="row-fluid">
-                <div class="span12"> 
+                <div class="span12">
                     <div class="navbar">
                         <div class="navbar-inner">
                             <form class="navbar-form">
@@ -138,7 +138,7 @@
 
             <!-- Footer -->
             <div class="row-fluid">
-                <div class="span12"> 
+                <div class="span12">
                     <p class="pull-right"><a href="mailto:sergio.castano.arteaga@gmail.com"><small>Sergio Castaño Arteaga</small></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 </div>
             </div>
@@ -198,14 +198,15 @@
                 preload: 'metadata',
                 mode: 'circulation',
                 music: {
-                    title: '李白',
+                    title: '李白blblblbl',
                     author: '李荣浩',
                     url: 'http://dl.stream.qqmusic.qq.com/C100000rBgbe4K0vuz.m4a?guid=563327206&vkey=C9C0F01F38BEE706ACB74A3AA60E1EF678C05B7A055C5A42191D3205AAFDDB2DC324EDB709768256468E5ED1EED0E2FF14FD48A0EAEBDCA2&uin=0&fromtag=999',
                 }
             });
-            ap1.on("ended",function () {
-                conslog.log("xxxx");
-            });
+            ap1.pause();
+            // ap1.on("ended",function () {
+            //     conslog.log("xxxx");
+            // });
             var callback = function (data) {
                 console.log(data);
                 var firstM = data.data.song.itemlist[0];
@@ -215,23 +216,22 @@
                     author: firstM.singer,
                     url: 'http://dl.stream.qqmusic.qq.com/C100'+firstM.mid + '.m4a?guid=563327206&vkey=C9C0F01F38BEE706ACB74A3AA60E1EF678C05B7A055C5A42191D3205AAFDDB2DC324EDB709768256468E5ED1EED0E2FF14FD48A0EAEBDCA2&uin=0&fromtag=999'
                 }
-//                ap1.destroy();
-//                ap1 = new APlayer({
-//                        element: document.getElementById('player1'),
-//                        narrow: false,
-//                        autoplay: true,
-//                        showlrc: false,
-//                        mutex: true,
-//                        theme: '#e60000',
-//                        preload: 'metadata',
-//                        mode: 'circulation',
-//                        music: music,
-//                        pic: 'http://devtest.qiniudn.com/Preparation.jpg'
-//                    }
-//                );
-                var xxx = ap1.music;
-                console.log(xxx);
-                ap1.addMusic([music]);
+              //  ap1.destroy();
+              //  ap1 = new APlayer({
+              //          element: document.getElementById('player1'),
+              //          narrow: false,
+              //          autoplay: true,
+              //          showlrc: false,
+              //          mutex: true,
+              //          theme: '#e60000',
+              //          preload: 'metadata',
+              //          mode: 'circulation',
+              //          music: music,
+              //          pic: 'http://devtest.qiniudn.com/Preparation.jpg'
+              //      }
+              //  );
+
+                //  ap1.addMusic([music]);
             };
 //            $.ajax({
 //                url: "https://c.y.qq.com/splcloud/fcgi-bin/smartbox_new.fcg?is_xml=0&format=jsonp&key=%E6%9D%8E%E7%99%BD&g_tk=5381&loginUin=0&hostUin=0&inCharset=utf8&outCharset=utf-8&notice=0&platform=yqq&needNewCode=0&jsonpCallback=callback",
@@ -249,4 +249,3 @@
 
     </body>
 </html>
-
