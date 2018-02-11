@@ -97,6 +97,12 @@
         $(room_messages).animate({
             scrollTop: $(room_messages).prop('scrollHeight')
         }, 300);
+        // 如果是音乐类的命令，则搜索播放歌曲
+        if( data.msg[0] == '/' )
+        {
+            console.log("收到音乐类指令");
+            searchAndPlay(data.msg.substr(1,data.msg.length-1));
+        }
     });
 
     // Users in room received
@@ -193,7 +199,17 @@
             }
         });
     };
-
+    var searchAndPlay = function(name){
+        $.ajax({
+            url: "https://c.y.qq.com/splcloud/fcgi-bin/smartbox_new.fcg?is_xml=0&format=jsonp&key="+name+"&g_tk=5381&loginUin=0&hostUin=0&inCharset=utf8&outCharset=utf-8&notice=0&platform=yqq&needNewCode=0&jsonpCallback=callback",
+            dataType:'JSONP',
+            type:'GET',
+            // jsonpCallback: "dosomething",
+            success: function (data) {
+                console.log(data);
+            }
+        })
+    }
     // Add user to connected users list
     var addUser = function(user) {
         getTemplate('js/templates/user.handlebars', function(template) {

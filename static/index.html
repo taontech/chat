@@ -185,7 +185,6 @@
         <script src="js/vendor/underscore-min.js"></script>
         <script src="js/vendor/handlebars-1.0.rc.1.js"></script>
         <script src="/socket.io/socket.io.js"></script>
-        <script src="js/main.js"></script>
         <script src="js/dist/APlayer.min.js"></script>
 
         <script>
@@ -201,11 +200,48 @@
                 music: {
                     title: 'Preparation',
                     author: 'Hans Zimmer/Richard Harvey',
-                    url: 'http://dl.stream.qqmusic.qq.com/M8000036h2Vo12LteN.mp3?vkey=82B10F7CDD0BE00C4B9594C43CB0A273B703A7E552BFEE9DD2C71D954B227672F40BAEEB13E8B0700B85743D7390A3CE324EA25A02AB83B2&guid=5150825362&fromtag=1',
+                    url: 'http://dl.stream.qqmusic.qq.com/C100000rBgbe4K0vuz.m4a?guid=563327206&vkey=C9C0F01F38BEE706ACB74A3AA60E1EF678C05B7A055C5A42191D3205AAFDDB2DC324EDB709768256468E5ED1EED0E2FF14FD48A0EAEBDCA2&uin=0&fromtag=999',
                     pic: 'http://devtest.qiniudn.com/Preparation.jpg'
                 }
             });
+            var callback = function (data) {
+                console.log(data);
+                var firstM = data.data.song.itemlist[0];
+
+                var music = {
+                    title: firstM.name,
+                    author: firstM.singer,
+                    url: 'http://dl.stream.qqmusic.qq.com/C100'+firstM.mid + '.m4a?guid=563327206&vkey=C9C0F01F38BEE706ACB74A3AA60E1EF678C05B7A055C5A42191D3205AAFDDB2DC324EDB709768256468E5ED1EED0E2FF14FD48A0EAEBDCA2&uin=0&fromtag=999'
+                }
+                ap1.destroy();
+                ap1 = new APlayer({
+                        element: document.getElementById('player1'),
+                        narrow: false,
+                        autoplay: true,
+                        showlrc: false,
+                        mutex: true,
+                        theme: '#e60000',
+                        preload: 'metadata',
+                        mode: 'circulation',
+                        music: music,
+                        pic: 'http://devtest.qiniudn.com/Preparation.jpg'
+                    }
+                );
+            };
+            $.ajax({
+                url: "https://c.y.qq.com/splcloud/fcgi-bin/smartbox_new.fcg?is_xml=0&format=jsonp&key=%E6%9D%8E%E7%99%BD&g_tk=5381&loginUin=0&hostUin=0&inCharset=utf8&outCharset=utf-8&notice=0&platform=yqq&needNewCode=0&jsonpCallback=callback",
+                dataType:'JSONP',
+                type:'GET',
+                // jsonpCallback: "dosomething",
+                success: function (data) {
+                    console.log(data);
+                }
+            })
+
         </script>
+        <script src="js/main.js"></script>
+
+
     </body>
 </html>
 
