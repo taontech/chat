@@ -215,7 +215,13 @@ io.sockets.on('connection', function(socket) {
             if (err) return logger.emit('newEvent', 'error', err);
             // Check if user is subscribed to room before sending his message
             if (_.contains(_.values(socket.rooms), data.room)) {
-                var message = {'room':data.room, 'username':obj.username, 'msg':data.msg, 'date':new Date()};
+              var message = {'room':data.room, 'username':obj.username, 'msg':data.msg, 'date':new Date(),'music':data.music};
+
+              if( data.music )
+              {
+                // 存储
+                message.music = data.music;
+              }
                 // Send message to room
                 io.to(data.room).emit('newMessage', message);
                 logger.emit('newEvent', 'newMessage', message);
