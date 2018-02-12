@@ -47,7 +47,7 @@ logger.on('newEvent', function(event, data) {
     // Persistent log storage too?
     // TODO
 });
-
+var musicindex = 0;
 // ***************************************************************************
 // Express routes helpers
 // ***************************************************************************
@@ -193,8 +193,8 @@ io.sockets.on('connection', function(socket) {
                          {
                              musics.push(JSON.parse(obj[i]));
                          }
-
-                        socket.emit('musicInRoom', {'musics':musics,'starttime':10});
+                        if( musics.length > 0 )
+                            socket.emit('musicInRoom', {'musics':musics,'starttime':10});
                     } )
                 }
             });
@@ -232,7 +232,7 @@ io.sockets.on('connection', function(socket) {
               {
                 // 存储
                 message.music = data.music;
-                db.zadd([data.room+'music',1,JSON.stringify(data.music)], redis.print);
+                db.zadd([data.room+'music',musicindex++,JSON.stringify(data.music)], redis.print);
               }
                 // Send message to room
                 io.to(data.room).emit('newMessage', message);

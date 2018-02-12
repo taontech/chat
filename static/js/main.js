@@ -142,7 +142,20 @@
         if( data.music )
         {
             // 如果有音乐信息，则添加
-            ap1.addMusic([data.music]);
+            if(ap1 == undefined){
+              ap1 = new APlayer({
+               element: document.getElementById('player1'),
+               narrow: false,
+               autoplay: true,
+               showlrc: false,
+               mutex: true,
+               theme: '#e60000',
+               preload: 'metadata',
+               mode: 'circulation',
+               music:data.music,
+             });
+           }else
+                ap1.addMusic([data.music]);
         }
     });
 
@@ -169,9 +182,10 @@
          music:data.musics,
        });
        ap1.play();
-       ap1.audio.addEventListener('ended',() => {
-         // ap1.removeSong(0);
+       ap1.on('ended',() => {
+          ap1.removeSong(0);
            // ap1.destroy();
+           ap1.play(0);
        })
     });
     // User nickname updated
