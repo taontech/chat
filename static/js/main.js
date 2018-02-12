@@ -2,7 +2,7 @@
 // Author: Sergio Castaño Arteaga
 // Email: sergio.castano.arteaga@gmail.com
 
-(function(){
+( function(){
 
     var debug = false;
 
@@ -13,53 +13,28 @@
     var socket = io.connect(window.location.host);
 
 
-    var ap1 = new APlayer({
-        element: document.getElementById('player1'),
-        narrow: false,
-        autoplay: true,
-        showlrc: false,
-        mutex: true,
-        theme: '#e60000',
-        preload: 'metadata',
-        mode: 'circulation',
-        music: {
-            title: '李白blblblbl',
-            author: '李荣浩',
-            url: 'http://dl.stream.qqmusic.qq.com/C100000rBgbe4K0vuz.m4a?guid=563327206&vkey=C9C0F01F38BEE706ACB74A3AA60E1EF678C05B7A055C5A42191D3205AAFDDB2DC324EDB709768256468E5ED1EED0E2FF14FD48A0EAEBDCA2&uin=0&fromtag=999',
-        }
-    });
-    ap1.pause();
+    var ap1;
+    // = new APlayer({
+    //     element: document.getElementById('player1'),
+    //     narrow: false,
+    //     autoplay: true,
+    //     showlrc: false,
+    //     mutex: true,
+    //     theme: '#e60000',
+    //     preload: 'metadata',
+    //     mode: 'circulation',
+    //     music: {
+    //         title: '李白blblblbl',
+    //         author: '李荣浩',
+    //         url: 'http://dl.stream.qqmusic.qq.com/C100000rBgbe4K0vuz.m4a?guid=563327206&vkey=C9C0F01F38BEE706ACB74A3AA60E1EF678C05B7A055C5A42191D3205AAFDDB2DC324EDB709768256468E5ED1EED0E2FF14FD48A0EAEBDCA2&uin=0&fromtag=999',
+    //     }
+    // });
+    // ap1.pause();
 
     // ap1.on("ended",function () {
     //     conslog.log("xxxx");
     // });
-    var callbackmusic = function (data) {
-        console.log(data);
-        var firstM = data.data.song.itemlist[0];
 
-        var music = {
-            title: firstM.name,
-            author: firstM.singer,
-            url: 'http://dl.stream.qqmusic.qq.com/C100'+firstM.mid + '.m4a?guid=563327206&vkey=C9C0F01F38BEE706ACB74A3AA60E1EF678C05B7A055C5A42191D3205AAFDDB2DC324EDB709768256468E5ED1EED0E2FF14FD48A0EAEBDCA2&uin=0&fromtag=999'
-        }
-      //  ap1.destroy();
-      //  ap1 = new APlayer({
-      //          element: document.getElementById('player1'),
-      //          narrow: false,
-      //          autoplay: true,
-      //          showlrc: false,
-      //          mutex: true,
-      //          theme: '#e60000',
-      //          preload: 'metadata',
-      //          mode: 'circulation',
-      //          music: music,
-      //          pic: 'http://devtest.qiniudn.com/Preparation.jpg'
-      //      }
-      //  );
-
-      //  ap1.addMusic([music]);
-      socket.emit('newMessage', {'room':getCurrentRoom(), 'msg':"为大家献上："+data.name ,'music':music});
-    };
   //            $.ajax({
   //                url: "https://c.y.qq.com/splcloud/fcgi-bin/smartbox_new.fcg?is_xml=0&format=jsonp&key=%E6%9D%8E%E7%99%BD&g_tk=5381&loginUin=0&hostUin=0&inCharset=utf8&outCharset=utf-8&notice=0&platform=yqq&needNewCode=0&jsonpCallback=callback",
   //                dataType:'JSONP',
@@ -159,10 +134,15 @@
             scrollTop: $(room_messages).prop('scrollHeight')
         }, 300);
         // 如果是音乐类的命令，则搜索播放歌曲
-        if( data.msg[0] == '/' )
+        // if( data.msg[0] == '/' )
+        // {
+        //     console.log("收到音乐类指令");
+        //     searchAndPlay(data.msg.substr(1,data.msg.length-1));
+        // }
+        if( data.music )
         {
-            console.log("收到音乐类指令");
-            searchAndPlay(data.msg.substr(1,data.msg.length-1));
+            // 如果有音乐信息，则添加
+            ap1.addMusic([data.music]);
         }
     });
 
@@ -176,8 +156,8 @@
     socket.on('musicInRoom',function(data){
        console.log('musicInRoom:%s',JSON.stringify(data));
       //  if(ap1)
-           ap1.destroy();
-        ap1 =new APlayer({
+        //   ap1.destroy();
+        ap1 = new APlayer({
          element: document.getElementById('player1'),
          narrow: false,
          autoplay: true,
@@ -188,9 +168,10 @@
          mode: 'circulation',
          music:data.musics,
        });
-       ap1.play(data.starttime);
-       ap1.audio.addEventListener('ended',()=>{
-         ap1.removeSong(ap1.playIndex-1);
+       ap1.play();
+       ap1.audio.addEventListener('ended',() => {
+         // ap1.removeSong(0);
+           // ap1.destroy();
        })
     });
     // User nickname updated
@@ -279,7 +260,20 @@
             }
         });
     };
+    callbackmusic = function (data) {
+        console.log(data);
+        var firstM = data.data.song.itemlist[0];
+
+        var music = {
+            title: firstM.name,
+            author: firstM.singer,
+            url: 'http://dl.stream.qqmusic.qq.com/C100'+firstM.mid + '.m4a?guid=563327206&vkey=C9C0F01F38BEE706ACB74A3AA60E1EF678C05B7A055C5A42191D3205AAFDDB2DC324EDB709768256468E5ED1EED0E2FF14FD48A0EAEBDCA2&uin=0&fromtag=999'
+        }
+      //  ap1.addMusic([music]);
+        socket.emit('newMessage', {'room':getCurrentRoom(), 'msg':"为大家献上："+ music.title ,'music':music});
+    };
     var searchAndPlay = function(name){
+
         $.ajax({
             url: "https://c.y.qq.com/splcloud/fcgi-bin/smartbox_new.fcg?is_xml=0&format=jsonp&key="+encodeURI(name)+"&g_tk=5381&loginUin=0&hostUin=0&inCharset=utf8&outCharset=utf-8&notice=0&platform=yqq&needNewCode=0&jsonpCallback=callbackmusic",
             dataType:'JSONP',
@@ -358,8 +352,15 @@
     $('#b_send_message').click(function(eventObject) {
         eventObject.preventDefault();
         if ($('#message_text').val() != "") {
+            var msg = getMessageText();
 
-            socket.emit('newMessage', {'room':getCurrentRoom(), 'msg':getMessageText()});
+            socket.emit('newMessage', {'room':getCurrentRoom(), 'msg':msg});
+
+            if( msg[0] == '/' )
+            {
+                console.log("收到音乐类指令");
+                searchAndPlay(msg.substr(1,msg.length-1));
+            }
         }
     });
 

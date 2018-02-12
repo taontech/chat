@@ -180,11 +180,22 @@ io.sockets.on('connection', function(socket) {
                 console.log('找到音乐socket');
                 if (usersInRoom.length == socketsInRoom.length)
                  {
-                    socket.emit('musicInRoom', {'musics':[{
-                        title: '李白',
-                        author: '李荣浩',
-                        url: 'http://dl.stream.qqmusic.qq.com/C100000rBgbe4K0vuz.m4a?guid=563327206&vkey=C9C0F01F38BEE706ACB74A3AA60E1EF678C05B7A055C5A42191D3205AAFDDB2DC324EDB709768256468E5ED1EED0E2FF14FD48A0EAEBDCA2&uin=0&fromtag=999',
-                    }],'starttime':10});
+                    // socket.emit('musicInRoom', {'musics':[{
+                    //     title: '李白',
+                    //     author: '李荣浩',
+                    //     url: 'http://dl.stream.qqmusic.qq.com/C100000rBgbe4K0vuz.m4a?guid=563327206&vkey=C9C0F01F38BEE706ACB74A3AA60E1EF678C05B7A055C5A42191D3205AAFDDB2DC324EDB709768256468E5ED1EED0E2FF14FD48A0EAEBDCA2&uin=0&fromtag=999',
+                    // }],'starttime':10});
+
+                    db.zrange( [data.room+'music',0,-1],function (err,obj) {
+                         console.log(obj);
+                         var musics = [];
+                         for(var i = 0; i<obj.length; ++i)
+                         {
+                             musics.push(JSON.parse(obj[i]));
+                         }
+
+                        socket.emit('musicInRoom', {'musics':musics,'starttime':10});
+                    } )
                 }
             });
         }
@@ -221,6 +232,7 @@ io.sockets.on('connection', function(socket) {
               {
                 // 存储
                 message.music = data.music;
+                db.zadd([data.room+'music',1,JSON.stringify(data.music)], redis.print);
               }
                 // Send message to room
                 io.to(data.room).emit('newMessage', message);
