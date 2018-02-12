@@ -170,7 +170,7 @@
        });
        ap1.play();
        ap1.audio.addEventListener('ended',() => {
-         // ap1.removeSong(0);
+          ap1.removeSong(ap1.playIndex-1);
            // ap1.destroy();
        })
     });
