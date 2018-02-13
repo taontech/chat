@@ -249,7 +249,7 @@ io.sockets.on('connection', function(socket) {
         // 投票过半，则发送切歌消息
         var usersInRoom = [];
         var socketsInRoom = _.keys(io.nsps['/'].adapter.rooms[data.room]);
-        // if( curMusic.endedCount >= socketsInRoom.length/2 )
+        if( curMusic.endedCount >= socketsInRoom.length/2 )
         {
             // 给全部人发送切歌消息
             changeMusic(data.room);
