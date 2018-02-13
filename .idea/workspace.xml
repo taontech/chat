@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6933cad2-a844-440e-898a-0ecfec778302" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/js/APlayer.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/js/APlayer.min.js.map" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/dist/APlayer.min.js" afterPath="$PROJECT_DIR$/static/js/dist/APlayer.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/dist/APlayer.min.js.map" afterPath="$PROJECT_DIR$/static/js/dist/APlayer.min.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/main.js" afterPath="$PROJECT_DIR$/static/js/main.js" />
-    </list>
+    <list default="true" id="6933cad2-a844-440e-898a-0ecfec778302" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -423,12 +416,12 @@
       <option name="presentableId" value="Default" />
       <updated>1517810260653</updated>
       <workItem from="1517810262341" duration="10863000" />
-      <workItem from="1518311305736" duration="25707000" />
+      <workItem from="1518311305736" duration="25868000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36570000" />
+    <option name="totallyTimeSpent" value="36731000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1100" y="-1024" width="1526" height="977" extended-state="0" />
