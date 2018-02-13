@@ -2,7 +2,7 @@
 // Author: Sergio Castaño Arteaga
 // Email: sergio.castano.arteaga@gmail.com
 var nickname = '匿名';
-
+var starttime = 0;
 ( function(){
 
     var debug = false;
@@ -184,7 +184,8 @@ var nickname = '匿名';
          mode: 'circulation',
          music:data.musics,
        });
-       ap1.play(data.starttime);
+       starttime = data.starttime;
+       ap1.play(((new Date().getTime()) - data.starttime)/1000);
 
        ap1.on('ended',function(){
           // ap1.removeSong(0);
@@ -443,6 +444,7 @@ var nickname = '匿名';
         nickname = getNickname();
         // Close modal if opened
         $('#modal_setnick').modal('hide');
+        ap1.play(((new Date().getTime()) - starttime)/1000);
     });
 
 })();

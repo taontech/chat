@@ -201,7 +201,7 @@ io.sockets.on('connection', function(socket) {
                         }
 
                         if( musics.length > 0 )
-                            socket.emit('musicInRoom', {'musics':musics,'room':data.room,'starttime':(new Date().getTime() - curMusic.startPlaytime)/1000});
+                            socket.emit('musicInRoom', {'musics':musics,'room':data.room,'starttime':(curMusic.startPlaytime)});
 
 
                     } )
