@@ -184,14 +184,23 @@ var nickname = '匿名';
          mode: 'circulation',
          music:data.musics,
        });
-       ap1.play();
+       ap1.play(data.starttime);
 
-       ap1.on('ended',() => {
-          ap1.removeSong(0);
-           // ap1.destroy();
-           ap1.play(0);
+       ap1.on('ended',function(){
+          // ap1.removeSong(0);
+          //  // ap1.destroy();
+          //  ap1.play(0);
+           socket.emit('playended', {'room':data.room, 'music':(ap1.music)});
+           ap1.pause();
        })
     });
+    var changeMusic = function(){
+        ap1.removeSong(0);
+        ap1.play(0);
+    }
+    socket.on('changemusic',function () {
+        changeMusic();
+    })
     // User nickname updated
     socket.on('userNicknameUpdated', function(data) {
         console.log("userNicknameUpdated: %s", JSON.stringify(data));

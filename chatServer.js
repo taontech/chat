@@ -48,6 +48,12 @@ logger.on('newEvent', function(event, data) {
     // TODO
 });
 var musicindex = 0;
+var musicstartTime = new Date().getTime();
+var curMusic = {
+    savetime:0, // score
+    startPlaytime:0, // 开始播放时间
+    endedCount:0,
+}
 // ***************************************************************************
 // Express routes helpers
 // ***************************************************************************
@@ -180,27 +186,76 @@ io.sockets.on('connection', function(socket) {
                 console.log('找到音乐socket');
                 if (usersInRoom.length == socketsInRoom.length)
                  {
-                    // socket.emit('musicInRoom', {'musics':[{
-                    //     title: '李白',
-                    //     author: '李荣浩',
-                    //     url: 'http://dl.stream.qqmusic.qq.com/C100000rBgbe4K0vuz.m4a?guid=563327206&vkey=C9C0F01F38BEE706ACB74A3AA60E1EF678C05B7A055C5A42191D3205AAFDDB2DC324EDB709768256468E5ED1EED0E2FF14FD48A0EAEBDCA2&uin=0&fromtag=999',
-                    // }],'starttime':10});
-
-                    db.zrange( [data.room+'music',0,-1],function (err,obj) {
-                         console.log(obj);
+                    db.zrange( [data.room+'music',0,-1, 'WITHSCORES'],function (err,obj) {
+                        // console.log(obj);
                          var musics = [];
-                         for(var i = 0; i<obj.length; ++i)
+                         for(var i = 0; i<obj.length; i+=2)
                          {
-                             musics.push(JSON.parse(obj[i]));
+                             var music = JSON.parse(obj[i]);
+                             music.savetime = obj[i+1];
+                             musics.push(music);
                          }
+                        if( curMusic.savetime == 0 ){
+                            curMusic.savetime = musics[0].savetime;
+                            curMusic.startPlaytime = new Date().getTime();
+                        }
+
                         if( musics.length > 0 )
-                            socket.emit('musicInRoom', {'musics':musics,'starttime':10});
+                            socket.emit('musicInRoom', {'musics':musics,'room':data.room,'starttime':(new Date().getTime() - curMusic.startPlaytime)/1000});
+
+
                     } )
                 }
             });
         }
     });
+    var changeMusic = function(room)
+    {
+        var musics = [];
 
+        db.zrange( [data.room+'music',0,-1, 'WITHSCORES'],function (err,obj) {
+           // console.log(obj);
+            for(var i = 0; i<obj.length; i+=2)
+            {
+                var music = JSON.parse(obj[i]);
+                music.score = obj[i+1];
+                musics.push(music);
+            }
+            // if( musics.length > 0 )
+            //     socket.emit('musicInRoom', {'musics':musics,'starttime':10});
+            if( musics.length > 1 ){
+                curMusic.savetime = musics[1].score;
+                curMusic.endedCount = 0;
+                curMusic.startPlaytime = new Date().getTime();
+                // 删除第一首歌
+                console.log("xxxx:::"+JSON.stringify(curMusic));
+                db.zremrangebyscore([data.room+'music',0,parseInt(curMusic.savetime)-1],function (err,obj) {
+                    console.log('切歌完毕，删除数据库成功')
+                    console.log(err);
+                })
+                io.to(room).emit('changemusic', '切歌');
+            }
+        } )
+
+    }
+    socket.on('playended',function (data) {
+        console.log('playeded::' + JSON.stringify(data));
+        if( curMusic.savetime == data.music.savetime )
+        {
+            // 标记一次播放结束
+            curMusic.endedCount++;
+        }
+
+        // 投票过半，则发送切歌消息
+        var usersInRoom = [];
+        var socketsInRoom = _.keys(io.nsps['/'].adapter.rooms[data.room]);
+        // if( curMusic.endedCount >= socketsInRoom.length/2 )
+        {
+            // 给全部人发送切歌消息
+            changeMusic(data.room);
+        }
+
+    });
     // User wants to change his nickname
     socket.on('setNickname', function(data) {
         // Get user info from db
@@ -232,7 +287,7 @@ io.sockets.on('connection', function(socket) {
               {
                 // 存储
                 message.music = data.music;
-                db.zadd([data.room+'music',musicindex++,JSON.stringify(data.music)], redis.print);
+                db.zadd([data.room+'music',new Date().getTime(),JSON.stringify(data.music)], redis.print);
               }
                 // Send message to room
                 io.to(data.room).emit('newMessage', message);
