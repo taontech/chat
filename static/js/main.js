@@ -1,6 +1,7 @@
 
 // Author: Sergio Castaño Arteaga
 // Email: sergio.castano.arteaga@gmail.com
+var nickname = '匿名';
 
 ( function(){
 
@@ -68,6 +69,8 @@
                 socket.disconnect();
             }, 600000);
         }
+        // 设置昵称
+        $('#modal_setnick').modal('show');
     });
 
     // Disconnected from server
@@ -229,6 +232,7 @@
     var addRoomTab = function(room) {
         getTemplate('js/templates/room_tab.handlebars', function(template) {
             $('#rooms_tabs').append(template({'room':room}));
+
         });
     };
 
@@ -260,17 +264,26 @@
 
     // Add message to room
     var addMessage = function(msg) {
-        getTemplate('js/templates/message.handlebars', function(template) {
+
+        var templPath = 'js/templates/message.handlebars';
+        if( msg.username == nickname ){
+            templPath = 'js/templates/mymessage.handlebars'
+        }
+        if( msg.music )
+        {
+            templPath = 'js/templates/musicmessage.handlebars'
+        }
+        getTemplate(templPath, function(template) {
             var room_messages = '#room_messages_'+msg.room;
             if ($(room_messages).length > 0) {
-              $(room_messages).append(template(msg));
+                $(room_messages).append(template(msg));
             } else {
-              var roomInterval = setInterval(function() {
-                if ($(room_messages).length > 0) {
-                  $(room_messages).append(template(msg));
-                  clearInterval(roomInterval);
-                }
-              }, 100);
+                var roomInterval = setInterval(function() {
+                    if ($(room_messages).length > 0) {
+                        $(room_messages).append(template(msg));
+                        clearInterval(roomInterval);
+                    }
+                }, 100);
             }
         });
     };
@@ -348,7 +361,7 @@
     // Get nickname from input field
     var getNickname = function() {
         var nickname = $('#nickname').val();
-        $('#nickname').val("");
+       // $('#nickname').val("");
         return nickname;
     };
 
@@ -417,7 +430,7 @@
     $('#b_set_nickname').click(function(eventObject) {
         eventObject.preventDefault();
         socket.emit('setNickname', {'username':getNickname()});
-
+        nickname = getNickname();
         // Close modal if opened
         $('#modal_setnick').modal('hide');
     });
