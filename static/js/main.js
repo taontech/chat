@@ -185,7 +185,7 @@ var starttime = 0;
          music:data.musics,
        });
        starttime = data.starttime;
-       ap1.play(((new Date().getTime()) - data.starttime)/1000);
+      // ap1.play(((new Date().getTime()) - data.starttime)/1000);
 
        ap1.on('ended',function(){
           // ap1.removeSong(0);
@@ -444,7 +444,9 @@ var starttime = 0;
         nickname = getNickname();
         // Close modal if opened
         $('#modal_setnick').modal('hide');
-        ap1.play(((new Date().getTime()) - starttime)/1000);
+        var time = ((new Date().getTime()) - starttime)/1000;
+        // ap1.play();
+        ap1.play(time);
     });
 
 })();

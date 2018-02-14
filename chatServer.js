@@ -195,7 +195,7 @@ io.sockets.on('connection', function(socket) {
                              music.savetime = obj[i+1];
                              musics.push(music);
                          }
-                        if( curMusic.savetime == 0 ){
+                        if( curMusic.savetime == 0 && musics.length > 0){
                             curMusic.savetime = musics[0].savetime;
                             curMusic.startPlaytime = new Date().getTime();
                         }
@@ -223,17 +223,25 @@ io.sockets.on('connection', function(socket) {
             }
             // if( musics.length > 0 )
             //     socket.emit('musicInRoom', {'musics':musics,'starttime':10});
+            db.zremrangebyscore([data.room+'music',0,parseInt(curMusic.savetime)],function (err,obj) {
+                console.log('切歌完毕，删除数据库成功')
+                console.log(err);
+            });
             if( musics.length > 1 ){
                 curMusic.savetime = musics[1].score;
                 curMusic.endedCount = 0;
                 curMusic.startPlaytime = new Date().getTime();
                 // 删除第一首歌
-                console.log("xxxx:::"+JSON.stringify(curMusic));
-                db.zremrangebyscore([data.room+'music',0,parseInt(curMusic.savetime)-1],function (err,obj) {
-                    console.log('切歌完毕，删除数据库成功')
-                    console.log(err);
-                })
+                // db.zremrangebyscore([data.room+'music',0,parseInt(curMusic.savetime)-1],function (err,obj) {
+                //     console.log('切歌完毕，删除数据库成功')
+                //     console.log(err);
+                // })
                 io.to(room).emit('changemusic', '切歌');
+            }else
+            {
+                curMusic.savetime = 0;
+                curMusic.endedCount = 0;
+                curMusic.startPlaytime = 0;
             }
         } )
 
