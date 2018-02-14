@@ -236,13 +236,14 @@ io.sockets.on('connection', function(socket) {
                 //     console.log('切歌完毕，删除数据库成功')
                 //     console.log(err);
                 // })
-                io.to(room).emit('changemusic', '切歌');
             }else
             {
                 curMusic.savetime = 0;
                 curMusic.endedCount = 0;
                 curMusic.startPlaytime = 0;
             }
+            io.to(room).emit('changemusic', '切歌');
+
         } )
 
     }
@@ -294,6 +295,7 @@ io.sockets.on('connection', function(socket) {
               if( data.music )
               {
                 // 存储
+                data.music.savetime = new Date().getTime();
                 message.music = data.music;
                 db.zadd([data.room+'music',new Date().getTime(),JSON.stringify(data.music)], redis.print);
               }

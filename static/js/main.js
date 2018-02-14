@@ -154,9 +154,16 @@ var starttime = 0;
                mutex: true,
                theme: '#e60000',
                preload: 'metadata',
-               mode: 'circulation',
+               mode: 'order',
                music:data.music,
              });
+             ap1.on('ended',function(){
+                // ap1.removeSong(0);
+                //  // ap1.destroy();
+                //  ap1.play(0);
+                 socket.emit('playended', {'room':data.room, 'music':(ap1.music)});
+                // ap1.pause();
+             })
            }else
                 ap1.addMusic([data.music]);
         }
@@ -181,7 +188,7 @@ var starttime = 0;
          mutex: true,
          theme: '#e60000',
          preload: 'metadata',
-         mode: 'circulation',
+         mode: 'order',
          music:data.musics,
        });
        starttime = data.starttime;
@@ -192,12 +199,18 @@ var starttime = 0;
           //  // ap1.destroy();
           //  ap1.play(0);
            socket.emit('playended', {'room':data.room, 'music':(ap1.music)});
-           ap1.pause();
+          //  ap1.pause();
        })
     });
     var changeMusic = function(){
+      if(ap1.option.music.length > 1){
         ap1.removeSong(0);
         ap1.play(0);
+      }else {
+        ap1.destroy();
+        ap1 = undefined;
+      }
+
     }
     socket.on('changemusic',function () {
         changeMusic();
