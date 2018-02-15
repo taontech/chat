@@ -415,6 +415,11 @@ var starttime = 0;
         }
     });
 
+    $('#b_qie_message').click(function(eventObject) {
+        eventObject.preventDefault();
+        // 切歌
+        socket.emit('changeMusic', {'room':getCurrentRoom(), 'music':(ap1.music)});
+    });
     // Join new room
     $('#b_join_room').click(function(eventObject) {
         var roomName = getRoomName();
@@ -461,5 +466,17 @@ var starttime = 0;
         // ap1.play();
         ap1.play(time);
     });
-
+    // $('#nickname').click(function(eventObject) {
+    //     eventObject.preventDefault();
+    //     setnickname();
+    // });
+    setnickname = function(){
+      socket.emit('setNickname', {'username':getNickname()});
+      nickname = getNickname();
+      // Close modal if opened
+      $('#modal_setnick').modal('hide');
+      var time = ((new Date().getTime()) - starttime)/1000;
+      // ap1.play();
+      ap1.play(time);
+    }
 })();

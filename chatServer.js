@@ -265,6 +265,21 @@ io.sockets.on('connection', function(socket) {
         }
 
     });
+    socket.on('changeMusic',function(data){
+      {
+          // 标记一次播放结束
+          curMusic.endedCount++;
+      }
+
+      // 投票过半，则发送切歌消息
+      var usersInRoom = [];
+      var socketsInRoom = _.keys(io.nsps['/'].adapter.rooms[data.room]);
+      if( curMusic.endedCount >= socketsInRoom.length/2 )
+      {
+          // 给全部人发送切歌消息
+          changeMusic(data.room);
+      }
+    });
     // User wants to change his nickname
     socket.on('setNickname', function(data) {
         // Get user info from db

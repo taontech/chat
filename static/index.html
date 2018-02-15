@@ -84,7 +84,7 @@
                                         <!-- Message -->
                                         <span class="label label-info">ServerBot</span>&nbsp;&nbsp;Welcome to the  Music room :)<br/>
                                         <span class="label label-info">ServerBot</span>&nbsp;&nbsp;使用'/'后面跟歌名即可点歌<br/>
-                                        <span class="label label-info">ServerBot</span>&nbsp;&nbsp;拖动进度到最后即可发起切歌投票，过半数听完即可全体切歌<br/>
+                                        <span class="label label-info">ServerBot</span>&nbsp;&nbsp;点击切歌按钮或者拖动进度到最后即可发起切歌投票，过半数听完即可全体切歌<br/>
                                         <span class="label label-danger">ServerBot</span>&nbsp;&nbsp;***感谢QQ音乐提供音乐来源***<br/>
                                         <!-- End Message -->
                                     </div>
@@ -116,6 +116,7 @@
                             <form class="navbar-form">
                                 <input id="message_text" type="text" class="span9">
                                 <button id="b_send_message" class="btn btn-primary">Send</button>
+                                <button id="b_qie_message" class="btn btn-primary">切歌</button>
                             </form>
                         </div>
                     </div>
@@ -168,17 +169,21 @@
 
         <!-- Set nick modal -->
         <div id="modal_setnick" class="modal hide fade">
+          <form class="navbar-form">
+
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h3>设置昵称</h3>
             </div>
             <div class="modal-body">
-                <input id="nickname" type="text" class="input-xlarge" placeholder="输入任意昵称">
+                <input id="nickname" type="text" class="input-xlarge" placeholder="输入任意昵称" >
                 <p><small>起一个骚浪贱的名字吧，让朋友们知道你是谁 :)</small></p>
             </div>
             <div class="modal-footer">
-                <a id="b_set_nickname" href="#" class="btn btn-primary">就叫这个吧</a>
+                <button id="b_set_nickname" href="#" class="btn btn-primary" type = 'submit'>就叫这个吧</a>
             </div>
+          </form>
+
         </div>
         <!-- End Set nick modal -->
 
