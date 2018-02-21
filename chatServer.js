@@ -278,7 +278,9 @@ io.sockets.on('connection', function(socket) {
       {
           // 给全部人发送切歌消息
           changeMusic(data.room);
-      }
+      }else
+          io.to(data.room).emit('changemusiccount', {'vote':curMusic.endedCount,'all':socketsInRoom.length});
+
     });
     // User wants to change his nickname
     socket.on('setNickname', function(data) {

@@ -214,6 +214,11 @@ var starttime = 0;
     }
     socket.on('changemusic',function () {
         changeMusic();
+        $('#b_qie_message').text('切歌');
+
+    })
+    socket.on('changemusiccount',function(data){
+      $('#b_qie_message').text('切歌('+data.vote+'/'+data.all+')');
     })
     // User nickname updated
     socket.on('userNicknameUpdated', function(data) {
