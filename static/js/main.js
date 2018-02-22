@@ -150,7 +150,7 @@ var starttime = 0;
                element: document.getElementById('player1'),
                narrow: false,
                autoplay: true,
-               showlrc: false,
+               showlrc: 1,
                mutex: true,
                theme: '#e60000',
                preload: 'metadata',
@@ -184,7 +184,7 @@ var starttime = 0;
          element: document.getElementById('player1'),
          narrow: false,
          autoplay: true,
-         showlrc: false,
+         showlrc: 1,
          mutex: true,
          theme: '#e60000',
          preload: 'metadata',
@@ -325,7 +325,87 @@ var starttime = 0;
             title: getNickname()+" 敬献："+firstM.name,
             author: firstM.singer,
             url: 'http://dl.stream.qqmusic.qq.com/C100'+firstM.mid + '.m4a?guid=563327206&vkey=C9C0F01F38BEE706ACB74A3AA60E1EF678C05B7A055C5A42191D3205AAFDDB2DC324EDB709768256468E5ED1EED0E2FF14FD48A0EAEBDCA2&uin=0&fromtag=999',
-            pic: "https://y.gtimg.cn/music/photo_new/T002R500x500M000"+firstM.albummid+".jpg"
+            pic: "https://y.gtimg.cn/music/photo_new/T002R500x500M000"+firstM.albummid+".jpg",
+            lrc: `[ti:Nuclear]
+                [ar:Mike Oldfield]
+        [al:Man On The Rocks]
+        [by:]
+        [offset:0]
+        [00:00.60]Standing on the edge of the crater
+            [00:08.81]
+        [00:10.01]Like the prophets once said
+            [00:12.09]
+        [00:14.11]And the ashes are all cold now
+            [00:19.71]
+        [00:20.74]No more bullets and the embers are dead
+            [00:26.12]
+        [00:29.15]Whispers in the air tell the tales
+            [00:37.04]
+        [00:38.49]Of the brothers gone
+            [00:40.52]
+        [00:42.51]Desolation  devastation
+            [00:47.69]
+        [00:49.87]What a miss we made  when it all went wrong
+            [00:54.17]
+        [00:57.51]Watching from the edge of the circus
+            [01:05.74]
+        [01:06.80]For the games to begin
+            [01:08.93]
+        [01:10.79]Gladiators draw their swords
+            [01:16.41]
+        [01:17.38]Form their ranks for armageddon
+                                           [01:24.44]
+        [01:25.26]I&apos;m nuclear
+            [01:28.60]I&apos;m wild
+            [01:30.82]
+        [01:32.43]I&apos;m breaking up inside
+            [01:37.79]
+        [01:39.08]A heart of broken glass
+            [01:42.03]
+        [01:42.60]Defiled
+            [01:45.00]
+        [01:46.39]Deep inside
+            [01:48.60]The abandoning child
+            [01:51.79]
+        [01:54.12]Standing on the edge of the underworld
+            [02:02.57]
+        [02:03.71]Looking at the abyss
+            [02:05.56]
+        [02:07.66]And I&apos;m hoping for some miracle
+            [02:13.46]
+        [02:14.39]To breakout to escape from all this
+            [02:19.94]
+        [02:21.71]Whispers in the air tell the tales
+            [02:31.23]Of a life that&apos;s gone
+            [02:34.23]
+        [02:36.08]Desolation  devastation
+            [02:41.91]
+        [02:43.36]What a mess we made  when it all went wrong
+            [02:49.53]
+        [02:50.50]I&apos;m nuclear
+            [02:53.04]
+        [02:53.62]I&apos;m wild
+            [02:56.04]
+        [02:57.27]I&apos;m breaking up inside
+            [03:03.29]
+        [03:04.30]A heart of broken glass
+            [03:07.13]
+        [03:07.80]Defiled
+            [03:10.38]
+        [03:11.58]Deep inside
+            [03:13.85]The abandoning child
+            [03:19.62]
+        [03:47.28]I&apos;m nuclear
+            [03:49.72]
+        [03:50.47]I&apos;m wild
+            [03:53.08]
+        [03:54.40]I&apos;m breaking up inside
+            [04:00.92]A heart of broken glass
+            [04:03.88]
+        [04:04.39]Defiled
+            [04:07.21]
+        [04:08.44]Deep inside
+            [04:10.89]The abandoning child`
         }
       //  ap1.addMusic([music]);
         socket.emit('newMessage', {'room':getCurrentRoom(), 'msg':"为大家献上："+ music.title ,'music':music});
