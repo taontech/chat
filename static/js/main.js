@@ -320,10 +320,12 @@ var starttime = 0;
         console.log(data);
         var firstM = data.data.song.itemlist[0];
 
+        //"https://y.gtimg.cn/music/photo_new/T002R500x500M000"+state.song.albummid+".jpg"
         var music = {
-            title: firstM.name,
+            title: getNickname()+" 敬献："+firstM.name,
             author: firstM.singer,
-            url: 'http://dl.stream.qqmusic.qq.com/C100'+firstM.mid + '.m4a?guid=563327206&vkey=C9C0F01F38BEE706ACB74A3AA60E1EF678C05B7A055C5A42191D3205AAFDDB2DC324EDB709768256468E5ED1EED0E2FF14FD48A0EAEBDCA2&uin=0&fromtag=999'
+            url: 'http://dl.stream.qqmusic.qq.com/C100'+firstM.mid + '.m4a?guid=563327206&vkey=C9C0F01F38BEE706ACB74A3AA60E1EF678C05B7A055C5A42191D3205AAFDDB2DC324EDB709768256468E5ED1EED0E2FF14FD48A0EAEBDCA2&uin=0&fromtag=999',
+            pic: "https://y.gtimg.cn/music/photo_new/T002R500x500M000"+firstM.albummid+".jpg"
         }
       //  ap1.addMusic([music]);
         socket.emit('newMessage', {'room':getCurrentRoom(), 'msg':"为大家献上："+ music.title ,'music':music});
