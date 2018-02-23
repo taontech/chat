@@ -131,6 +131,12 @@ var starttime = 0;
         console.log("newMessage: %s", JSON.stringify(data));
         addMessage(data);
 
+        Notification.requestPermission( function(status) {
+            console.log(status); // 仅当值为 "granted" 时显示通知
+            var n = new Notification(data.msg, {body: data.username}); // 显示通知
+        });
+
+
         // Scroll down room messages
         var room_messages = '#room_messages_'+data.room;
         $(room_messages).animate({
@@ -324,12 +330,12 @@ var starttime = 0;
         var music = {
             title: getNickname()+" 敬献："+firstM.name,
             author: firstM.singer,
-            url: 'http://dl.stream.qqmusic.qq.com/C100'+firstM.mid + '.m4a?guid=563327206&vkey=C9C0F01F38BEE706ACB74A3AA60E1EF678C05B7A055C5A42191D3205AAFDDB2DC324EDB709768256468E5ED1EED0E2FF14FD48A0EAEBDCA2&uin=0&fromtag=999',
+            url: 'https://dl.stream.qqmusic.qq.com/C100'+firstM.mid + '.m4a?guid=563327206&vkey=C9C0F01F38BEE706ACB74A3AA60E1EF678C05B7A055C5A42191D3205AAFDDB2DC324EDB709768256468E5ED1EED0E2FF14FD48A0EAEBDCA2&uin=0&fromtag=999',
             pic: "https://y.gtimg.cn/music/photo_new/T002R500x500M000"+firstM.albummid+".jpg",
             lrc: 'https://api.darlin.me/music/lyric/'+firstM.id+'/',
         }
       //  ap1.addMusic([music]);
-        socket.emit('newMessage', {'room':getCurrentRoom(), 'msg':"为大家献上："+ music.title ,'music':music});
+        socket.emit('newMessage', {'room':getCurrentRoom(), 'msg': music.title ,'music':music});
     };
     var searchAndPlay = function(name){
 

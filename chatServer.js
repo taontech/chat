@@ -21,12 +21,22 @@ var express = require('express'),
     events = require('events'),
     _ = require('underscore'),
     sanitize = require('validator').sanitize;
+var https = require('https');
+var fs = require('fs');
+var privateKey  = fs.readFileSync('./cert/private.key', 'utf8'),
+    certificate = fs.readFileSync('./cert/file.crt', 'utf8');
+var credentials = {key: privateKey, cert: certificate};
+
 
 // HTTP Server configuration & launch
-var app = express(),
-    server = http.createServer(app);
-    server.listen(conf.port);
-
+var app = express();
+    // server = http.createServer(app);
+    // server.listen(conf.port);
+var server = https.createServer(credentials, app);
+var SSLPort = 8888;
+server.listen(SSLPort, function() {
+    console.log('OneLib https is running', SSLPort);
+});
 // Express app configuration
 app.configure(function() {
     app.use(express.bodyParser());
