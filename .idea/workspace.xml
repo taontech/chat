@@ -2,6 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6933cad2-a844-440e-898a-0ecfec778302" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/dist/APlayer.min.js" afterPath="$PROJECT_DIR$/static/js/dist/APlayer.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/dist/APlayer.min.js.map" afterPath="$PROJECT_DIR$/static/js/dist/APlayer.min.js.map" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/main.js" afterPath="$PROJECT_DIR$/static/js/main.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -42,8 +45,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="309">
-              <caret line="87" column="80" lean-forward="false" selection-start-line="87" selection-start-column="80" selection-end-line="87" selection-end-column="80" />
+            <state relative-caret-position="-2151">
+              <caret line="14" column="18" lean-forward="true" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
               <folding>
                 <element signature="e#2145#2151#0" expanded="true" />
                 <element signature="e#2168#2174#0" expanded="true" />
@@ -61,8 +64,8 @@
       <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/js/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="305">
-              <caret line="329" column="12" lean-forward="false" selection-start-line="329" selection-start-column="12" selection-end-line="329" selection-end-column="12" />
+            <state relative-caret-position="86">
+              <caret line="423" column="7" lean-forward="true" selection-start-line="423" selection-start-column="7" selection-end-line="423" selection-end-column="7" />
               <folding />
             </state>
           </provider>
@@ -72,15 +75,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>console</find>
-      <find>&quot;music&quot;:{</find>
-      <find>&quot;music:{</find>
-      <find>&quot;music':{</find>
-      <find>music':{</find>
-      <find>s</find>
-      <find>save</find>
-      <find>saveti</find>
-      <find>savetime</find>
       <find>playended</find>
       <find>change</find>
       <find>aplayer</find>
@@ -100,8 +94,17 @@
       <find>lc</find>
       <find>l</find>
       <find>callback</find>
-      <find>showlrc</find>
       <find>APlayer</find>
+      <find>j</find>
+      <find>jsonp</find>
+      <find>`</find>
+      <find>json</find>
+      <find>showlrc</find>
+      <find>n</find>
+      <find>nu</find>
+      <find>nucle</find>
+      <find>nuclear</find>
+      <find>nuclea</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -420,12 +423,12 @@
       <workItem from="1518311305736" duration="25868000" />
       <workItem from="1518489717019" duration="7869000" />
       <workItem from="1518568714011" duration="2966000" />
-      <workItem from="1519265608684" duration="6370000" />
+      <workItem from="1519265608684" duration="9224000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="56135000" />
+    <option name="totallyTimeSpent" value="58989000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1215" y="-1000" width="1526" height="977" extended-state="0" />
@@ -829,23 +832,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="309">
-          <caret line="87" column="80" lean-forward="false" selection-start-line="87" selection-start-column="80" selection-end-line="87" selection-end-column="80" />
-          <folding>
-            <element signature="e#2145#2151#0" expanded="true" />
-            <element signature="e#2168#2174#0" expanded="true" />
-            <element signature="e#2906#2912#0" expanded="true" />
-            <element signature="e#2919#2925#0" expanded="true" />
-            <element signature="e#3129#3135#0" expanded="true" />
-            <element signature="e#3254#3260#0" expanded="true" />
-            <element signature="e#3468#3474#0" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/js/dist/APlayer.min.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -865,10 +851,27 @@
         <state />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/static/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2151">
+          <caret line="14" column="18" lean-forward="true" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
+          <folding>
+            <element signature="e#2145#2151#0" expanded="true" />
+            <element signature="e#2168#2174#0" expanded="true" />
+            <element signature="e#2906#2912#0" expanded="true" />
+            <element signature="e#2919#2925#0" expanded="true" />
+            <element signature="e#3129#3135#0" expanded="true" />
+            <element signature="e#3254#3260#0" expanded="true" />
+            <element signature="e#3468#3474#0" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/static/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="305">
-          <caret line="329" column="12" lean-forward="false" selection-start-line="329" selection-start-column="12" selection-end-line="329" selection-end-column="12" />
+        <state relative-caret-position="86">
+          <caret line="423" column="7" lean-forward="true" selection-start-line="423" selection-start-column="7" selection-end-line="423" selection-end-column="7" />
           <folding />
         </state>
       </provider>
