@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6933cad2-a844-440e-898a-0ecfec778302" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/chatServer.js" afterPath="$PROJECT_DIR$/chatServer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/main.js" afterPath="$PROJECT_DIR$/static/js/main.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -19,13 +17,13 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="chatServer.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="chatServer.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/chatServer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="750">
-              <caret line="56" column="34" lean-forward="true" selection-start-line="56" selection-start-column="34" selection-end-line="56" selection-end-column="34" />
+            <state relative-caret-position="476">
+              <caret line="208" column="0" lean-forward="true" selection-start-line="208" selection-start-column="0" selection-end-line="208" selection-end-column="0" />
               <folding>
-                <marker date="1519374985106" expanded="true" signature="260:261" ph="{&quot;dbHost&quot;: '127.0.0.1'...}" />
+                <marker date="1519440703849" expanded="true" signature="260:261" ph="{&quot;dbHost&quot;: '127.0.0.1'...}" />
               </folding>
             </state>
           </provider>
@@ -60,10 +58,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/js/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
+            <state relative-caret-position="362">
               <caret line="337" column="66" lean-forward="false" selection-start-line="337" selection-start-column="66" selection-end-line="337" selection-end-column="66" />
               <folding />
             </state>
@@ -84,8 +82,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>w</find>
-      <find>we</find>
       <find>welco</find>
       <find>welcom</find>
       <find>now ch</find>
@@ -114,6 +110,8 @@
       <find>http</find>
       <find>server</find>
       <find>newmessage</find>
+      <find>为大家</find>
+      <find>getal</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -129,8 +127,8 @@
         <option value="$PROJECT_DIR$/static/js/dist/APlayer.min.js.map" />
         <option value="$PROJECT_DIR$/static/js/templates/room.handlebars" />
         <option value="$PROJECT_DIR$/static/index.html" />
-        <option value="$PROJECT_DIR$/chatServer.js" />
         <option value="$PROJECT_DIR$/static/js/main.js" />
+        <option value="$PROJECT_DIR$/chatServer.js" />
       </list>
     </option>
   </component>
@@ -433,12 +431,12 @@
       <workItem from="1518489717019" duration="7869000" />
       <workItem from="1518568714011" duration="2966000" />
       <workItem from="1519265608684" duration="10194000" />
-      <workItem from="1519373160598" duration="1620000" />
+      <workItem from="1519373160598" duration="3312000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="61579000" />
+    <option name="totallyTimeSpent" value="63271000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1173" y="-1030" width="1526" height="977" extended-state="0" />
@@ -586,7 +584,7 @@
         <state relative-caret-position="648">
           <caret line="252" column="95" lean-forward="false" selection-start-line="252" selection-start-column="95" selection-end-line="252" selection-end-column="95" />
           <folding>
-            <marker date="1519374985106" expanded="true" signature="260:261" ph="{&quot;dbHost&quot;: '127.0.0.1'...}" />
+            <marker date="1519440703849" expanded="true" signature="260:261" ph="{&quot;dbHost&quot;: '127.0.0.1'...}" />
           </folding>
         </state>
       </provider>
@@ -604,7 +602,7 @@
         <state relative-caret-position="360">
           <caret line="24" column="37" lean-forward="false" selection-start-line="24" selection-start-column="37" selection-end-line="24" selection-end-column="37" />
           <folding>
-            <marker date="1519374985106" expanded="true" signature="260:261" ph="{&quot;dbHost&quot;: '127.0.0.1'...}" />
+            <marker date="1519440703849" expanded="true" signature="260:261" ph="{&quot;dbHost&quot;: '127.0.0.1'...}" />
           </folding>
         </state>
       </provider>
@@ -850,16 +848,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/chatServer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="750">
-          <caret line="56" column="34" lean-forward="true" selection-start-line="56" selection-start-column="34" selection-end-line="56" selection-end-column="34" />
-          <folding>
-            <marker date="1519374985106" expanded="true" signature="260:261" ph="{&quot;dbHost&quot;: '127.0.0.1'...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/js/templates/message.handlebars">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
@@ -870,9 +858,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
+        <state relative-caret-position="362">
           <caret line="337" column="66" lean-forward="false" selection-start-line="337" selection-start-column="66" selection-end-line="337" selection-end-column="66" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chatServer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="208" column="0" lean-forward="true" selection-start-line="208" selection-start-column="0" selection-end-line="208" selection-end-column="0" />
+          <folding>
+            <marker date="1519440703849" expanded="true" signature="260:261" ph="{&quot;dbHost&quot;: '127.0.0.1'...}" />
+          </folding>
         </state>
       </provider>
     </entry>

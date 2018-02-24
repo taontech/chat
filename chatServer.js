@@ -205,8 +205,9 @@ io.sockets.on('connection', function(socket) {
                              music.savetime = obj[i+1];
                              musics.push(music);
                          }
-                        if( curMusic.savetime == 0 && musics.length > 0){
-                            curMusic.savetime = musics[0].savetime;
+                        curMusic.savetime = musics[0].savetime;
+
+                        if( curMusic.savetime == 0   && musics.length > 0){
                             curMusic.startPlaytime = new Date().getTime();
                         }
 
@@ -259,6 +260,12 @@ io.sockets.on('connection', function(socket) {
     }
     socket.on('playended',function (data) {
         console.log('playeded::' + JSON.stringify(data));
+        if( curMusic.savetime == 0 )
+        {
+            // 给全部人发送切歌消息
+            changeMusic(data.room);
+            return;
+        }
         if( curMusic.savetime == data.music.savetime )
         {
             // 标记一次播放结束
