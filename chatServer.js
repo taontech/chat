@@ -205,7 +205,8 @@ io.sockets.on('connection', function(socket) {
                              music.savetime = obj[i+1];
                              musics.push(music);
                          }
-                        curMusic.savetime = musics[0].savetime;
+                         if( musics.length > 0 )
+                              curMusic.savetime = musics[0].savetime;
 
                         if( curMusic.savetime == 0   && musics.length > 0){
                             curMusic.startPlaytime = new Date().getTime();
