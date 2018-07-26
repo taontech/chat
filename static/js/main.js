@@ -13,42 +13,7 @@ var starttime = 0;
 
     var socket = io.connect(window.location.host);
 
-
     var ap1;
-    // = new APlayer({
-    //     element: document.getElementById('player1'),
-    //     narrow: false,
-    //     autoplay: true,
-    //     showlrc: false,
-    //     mutex: true,
-    //     theme: '#e60000',
-    //     preload: 'metadata',
-    //     mode: 'circulation',
-    //     music: {
-    //         title: '李白blblblbl',
-    //         author: '李荣浩',
-    //         url: 'http://dl.stream.qqmusic.qq.com/C100000rBgbe4K0vuz.m4a?guid=563327206&vkey=C9C0F01F38BEE706ACB74A3AA60E1EF678C05B7A055C5A42191D3205AAFDDB2DC324EDB709768256468E5ED1EED0E2FF14FD48A0EAEBDCA2&uin=0&fromtag=999',
-    //     }
-    // });
-    // ap1.pause();
-
-    // ap1.on("ended",function () {
-    //     conslog.log("xxxx");
-    // });
-
-  //            $.ajax({
-  //                url: "https://c.y.qq.com/splcloud/fcgi-bin/smartbox_new.fcg?is_xml=0&format=jsonp&key=%E6%9D%8E%E7%99%BD&g_tk=5381&loginUin=0&hostUin=0&inCharset=utf8&outCharset=utf-8&notice=0&platform=yqq&needNewCode=0&jsonpCallback=callback",
-  //                dataType:'JSONP',
-  //                type:'GET',
-  //                // jsonpCallback: "dosomething",
-  //                success: function (data) {
-  //                    console.log(data);
-  //                }
-  //            })
-
-
-
-
     // Connection established
     socket.on('connected', function (data) {
         console.log(data);
@@ -169,6 +134,9 @@ var starttime = 0;
                 //  ap1.play(0);
                  socket.emit('playended', {'room':data.room, 'music':(ap1.music)});
                 // ap1.pause();
+             });
+             ap1.on('play',function () {
+                 document.title = ap1.music.title;
              })
            }else
                 ap1.addMusic([data.music]);
@@ -215,6 +183,8 @@ var starttime = 0;
       }else {
         ap1.destroy();
         ap1 = undefined;
+          document.title = '没有歌了，快去点';
+
       }
 
     }
@@ -324,6 +294,14 @@ var starttime = 0;
     };
     callbackmusic = function (data) {
         console.log(data);
+
+        if( data.data.song == undefined )
+        {
+            // 弹窗提示
+            console.log("没有找到歌曲");
+            addMessage({"username":'ServerBot',"room":"MainRoom",'msg':"没有找到相关的歌曲！"});
+            return;
+        }
         var firstM = data.data.song.itemlist[0];
 
         //"https://y.gtimg.cn/music/photo_new/T002R500x500M000"+state.song.albummid+".jpg"

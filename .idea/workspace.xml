@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6933cad2-a844-440e-898a-0ecfec778302" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/chatServer.js" afterPath="$PROJECT_DIR$/chatServer.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/main.js" afterPath="$PROJECT_DIR$/static/js/main.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -17,13 +19,13 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="chatServer.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="chatServer.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/chatServer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="208" column="0" lean-forward="true" selection-start-line="208" selection-start-column="0" selection-end-line="208" selection-end-column="0" />
+            <state relative-caret-position="240">
+              <caret line="226" column="0" lean-forward="true" selection-start-line="226" selection-start-column="0" selection-end-line="226" selection-end-column="0" />
               <folding>
-                <marker date="1519440703849" expanded="true" signature="260:261" ph="{&quot;dbHost&quot;: '127.0.0.1'...}" />
+                <marker date="1519454526071" expanded="true" signature="260:261" ph="{&quot;dbHost&quot;: '127.0.0.1'...}" />
               </folding>
             </state>
           </provider>
@@ -42,8 +44,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="18" lean-forward="false" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
+            <state relative-caret-position="339">
+              <caret line="107" column="22" lean-forward="false" selection-start-line="107" selection-start-column="22" selection-end-line="107" selection-end-column="22" />
               <folding>
                 <element signature="e#2145#2151#0" expanded="true" />
                 <element signature="e#2168#2174#0" expanded="true" />
@@ -58,21 +60,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/js/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="362">
-              <caret line="337" column="66" lean-forward="false" selection-start-line="337" selection-start-column="66" selection-end-line="337" selection-end-column="66" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="message.handlebars" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/js/templates/message.handlebars">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+            <state relative-caret-position="475">
+              <caret line="138" column="50" lean-forward="false" selection-start-line="138" selection-start-column="50" selection-end-line="138" selection-end-column="50" />
               <folding />
             </state>
           </provider>
@@ -82,7 +74,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>welco</find>
       <find>welcom</find>
       <find>now ch</find>
       <find>welcome</find>
@@ -111,6 +102,7 @@
       <find>server</find>
       <find>newmessage</find>
       <find>为大家</find>
+      <find>change</find>
       <find>getal</find>
     </findStrings>
   </component>
@@ -127,8 +119,8 @@
         <option value="$PROJECT_DIR$/static/js/dist/APlayer.min.js.map" />
         <option value="$PROJECT_DIR$/static/js/templates/room.handlebars" />
         <option value="$PROJECT_DIR$/static/index.html" />
-        <option value="$PROJECT_DIR$/static/js/main.js" />
         <option value="$PROJECT_DIR$/chatServer.js" />
+        <option value="$PROJECT_DIR$/static/js/main.js" />
       </list>
     </option>
   </component>
@@ -431,12 +423,12 @@
       <workItem from="1518489717019" duration="7869000" />
       <workItem from="1518568714011" duration="2966000" />
       <workItem from="1519265608684" duration="10194000" />
-      <workItem from="1519373160598" duration="3312000" />
+      <workItem from="1519373160598" duration="5460000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="63271000" />
+    <option name="totallyTimeSpent" value="65419000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1173" y="-1030" width="1526" height="977" extended-state="0" />
@@ -471,13 +463,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/static/js/vendor/handlebars-1.0.rc.1.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/js/templates/user.handlebars">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -513,6 +498,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2415">
           <caret line="0" column="23334" lean-forward="false" selection-start-line="0" selection-start-column="23327" selection-end-line="0" selection-end-column="23334" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -584,7 +570,7 @@
         <state relative-caret-position="648">
           <caret line="252" column="95" lean-forward="false" selection-start-line="252" selection-start-column="95" selection-end-line="252" selection-end-column="95" />
           <folding>
-            <marker date="1519440703849" expanded="true" signature="260:261" ph="{&quot;dbHost&quot;: '127.0.0.1'...}" />
+            <marker date="1519454526071" expanded="true" signature="260:261" ph="{&quot;dbHost&quot;: '127.0.0.1'...}" />
           </folding>
         </state>
       </provider>
@@ -602,7 +588,7 @@
         <state relative-caret-position="360">
           <caret line="24" column="37" lean-forward="false" selection-start-line="24" selection-start-column="37" selection-end-line="24" selection-end-column="37" />
           <folding>
-            <marker date="1519440703849" expanded="true" signature="260:261" ph="{&quot;dbHost&quot;: '127.0.0.1'...}" />
+            <marker date="1519454526071" expanded="true" signature="260:261" ph="{&quot;dbHost&quot;: '127.0.0.1'...}" />
           </folding>
         </state>
       </provider>
@@ -661,6 +647,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -706,6 +693,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -818,6 +806,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -833,8 +822,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="18" lean-forward="false" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
+        <state relative-caret-position="339">
+          <caret line="107" column="22" lean-forward="false" selection-start-line="107" selection-start-column="22" selection-end-line="107" selection-end-column="22" />
           <folding>
             <element signature="e#2145#2151#0" expanded="true" />
             <element signature="e#2168#2174#0" expanded="true" />
@@ -848,6 +837,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/chatServer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="226" column="0" lean-forward="true" selection-start-line="226" selection-start-column="0" selection-end-line="226" selection-end-column="0" />
+          <folding>
+            <marker date="1519454526071" expanded="true" signature="260:261" ph="{&quot;dbHost&quot;: '127.0.0.1'...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/static/js/templates/message.handlebars">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
@@ -856,21 +855,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/main.js">
+    <entry file="file://$PROJECT_DIR$/static/js/vendor/jquery-1.8.1.min.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="362">
-          <caret line="337" column="66" lean-forward="false" selection-start-line="337" selection-start-column="66" selection-end-line="337" selection-end-column="66" />
+        <state relative-caret-position="285">
+          <caret line="1" column="43027" lean-forward="false" selection-start-line="1" selection-start-column="43027" selection-end-line="1" selection-end-column="43027" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/chatServer.js">
+    <entry file="file://$PROJECT_DIR$/static/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="208" column="0" lean-forward="true" selection-start-line="208" selection-start-column="0" selection-end-line="208" selection-end-column="0" />
-          <folding>
-            <marker date="1519440703849" expanded="true" signature="260:261" ph="{&quot;dbHost&quot;: '127.0.0.1'...}" />
-          </folding>
+        <state relative-caret-position="475">
+          <caret line="138" column="50" lean-forward="false" selection-start-line="138" selection-start-column="50" selection-end-line="138" selection-end-column="50" />
+          <folding />
         </state>
       </provider>
     </entry>
